@@ -2,6 +2,7 @@ const express = require('express')
 const colors = require('colors')
 const connectDB = require('./config/db_config')
 const errorHandler = require('./middleware/errorHandler')
+const cors = require('cors')
 require("dotenv").config()
 
 const app = express()
@@ -10,6 +11,11 @@ const PORT = process.env.PORT || 8000
 
 // DB Connection
 connectDB()
+
+app.use(cors({
+    origin: '*', // or your frontend URL
+    credentials: true
+}));
 
 // Body Paraser
 app.use(express.json());
