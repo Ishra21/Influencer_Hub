@@ -1,4 +1,5 @@
 import axios from "axios"
+import { BASE_URL } from "../../config";
 
 const fetchAllUsersForAdmin  = async (token)=>{
 
@@ -7,7 +8,7 @@ const options = {
         authorization : `Bearer ${token}`
     }
 }
-    const response = await axios.get("/api/admin/users", options)
+    const response = await axios.get(`${BASE_URL}/api/admin/users`, options)
     // console.log(response.data)
     return response.data;   
 }
@@ -20,7 +21,7 @@ const fetchAllCommentsForAdmin  = async (token)=>{
         }
     }
     
-        const response = await axios.get("/api/admin/comments", options)
+        const response = await axios.get(`${BASE_URL}/api/admin/comments`, options)
         // console.log(response.data)
         return response.data;   
     }
@@ -32,7 +33,7 @@ const fetchAllCommentsForAdmin  = async (token)=>{
             }
         }
     
-        const response = await axios.post("/api/admin/influencer", formData, options)
+        const response = await axios.post(`${BASE_URL}/api/admin/influencer`, formData, options)
         // console.log(response.data)
         return response.data; // ✅ Return the data to thunk
     }
@@ -45,7 +46,7 @@ const fetchAllCommentsForAdmin  = async (token)=>{
             }
         }
     
-        const response = await axios.put("/api/admin/influencer/" + formData._id, formData, options)
+        const response = await axios.put(`${BASE_URL}/api/admin/influencer/` + formData._id, formData, options)
         // console.log(response.data)
         return response.data; // Return the data to thunk
     }
@@ -58,7 +59,7 @@ const fetchAllCommentsForAdmin  = async (token)=>{
             }
         }
     
-        const response = await axios.delete(`/api/admin/influencer/${id}`, options);
+        const response = await axios.delete(`${BASE_URL}/api/admin/influencer/${id}`, options);
         // console.log(response.data)
         return response.data; // Return the data to thunk
     }
@@ -70,7 +71,7 @@ const fetchAllCommentsForAdmin  = async (token)=>{
         }
     }
         // console.log(formData)
-const response = await axios.post(`/api/booking/${formData.bid}/comment` , formData, options)
+const response = await axios.post(`${BASE_URL}/api/booking/${formData.bid}/comment` , formData, options)
         // console.log(response.data)
         return response.data; // Return the data to thunk           
       }

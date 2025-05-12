@@ -1,4 +1,5 @@
     import axios from "axios"
+import { BASE_URL } from "../../config"
 
     const fetchAllUsersBookings  = async (token)=>{
 
@@ -8,7 +9,7 @@
         }
     }
 
-        const response = await axios.get("/api/admin/bookings", options)
+        const response = await axios.get(`${BASE_URL}/api/admin/bookings`, options)
         // console.log(response.data)
         return response.data;   
     }
@@ -19,7 +20,7 @@
             authorization: `Bearer ${token}`,
           },
         };
-        const response = await axios.put(`/api/admin/bookings/${updateStatus._id}`, { status: updateStatus.value }, options)
+        const response = await axios.put(`${BASE_URL}/api/admin/bookings/${updateStatus._id}`, { status: updateStatus.value }, options)
         return response.data
       }
     const fetchUserBookings = async (token) => {
@@ -28,7 +29,7 @@
                 authorization: `Bearer ${token}`
             }
         };
-            const response = await axios.get(`/api/booking`, options);
+            const response = await axios.get(`${BASE_URL}/api/booking`, options);
         // console.log("response from API:", response.data); // Add this
         return response.data;
     };
@@ -39,7 +40,7 @@
                 authorization: `Bearer ${token}`
             }
         };
-            const response = await axios.get(`/api/booking/` + id , options);
+            const response = await axios.get(`${BASE_URL}/api/booking/` + id , options);
         // console.log("response from API:", response.data); // Add this
         return response.data;
     };
@@ -52,7 +53,7 @@
                 authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.post(`/api/booking/` + id, {} , options);
+        const response = await axios.post(`${BASE_URL}/api/booking/` + id, {} , options);
     //    console.log(response.data)
         return response.data;
     }
