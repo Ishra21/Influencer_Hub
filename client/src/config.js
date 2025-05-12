@@ -1,1 +1,1 @@
-export const BASE_URL = "https://influencer-hub.onrender.com/";
+export const BASE_URL = "https://influencer-hub.onrender.com";
